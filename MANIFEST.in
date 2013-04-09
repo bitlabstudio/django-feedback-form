@@ -1,0 +1,8 @@
+include AUTHORS
+include LICENSE
+include DESCRIPTION
+include CHANGELOG.txt
+include README.md
+graft feedback_form
+prune feedback_form/tests/coverage
+recursive-exclude feedback_form *.orig *.pyc
