@@ -9,6 +9,8 @@ Prerequisites
 You need at least the following packages in your virtualenv:
 
 * Django 1.4
+* Django Mailer
+* Django Libs
 * South
 
 
@@ -28,6 +30,7 @@ Add the app to your ``INSTALLED_APPS``::
     INSTALLED_APPS = [
         ...
         'django',
+        'mailer',
         'feedback_form',
     ]
 

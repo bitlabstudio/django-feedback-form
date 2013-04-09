@@ -4,4 +4,4 @@
 coverage/
 db.sqlite
 media/
-
+local_settings.py
