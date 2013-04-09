@@ -4,6 +4,8 @@ from django.test import TestCase
 from django_libs.tests.factories import UserFactory
 from django_libs.tests.mixins import ViewTestMixin
 
+from ...models import Feedback
+
 
 class FeedbackCreateViewTestCase(ViewTestMixin, TestCase):
     """Tests for the ``FeedbackCreateView`` generic view."""
@@ -18,3 +20,6 @@ class FeedbackCreateViewTestCase(ViewTestMixin, TestCase):
     def test_view(self):
         self.should_be_callable_when_anonymous()
         self.should_be_callable_when_authenticated(self.user)
+        self.is_callable(method='post', data={'message': 'Foo'})
+        self.assertEqual(Feedback.objects.all().count(), 1)
+        self.assertEqual(Feedback.objects.all()[0].message, 'Foo')

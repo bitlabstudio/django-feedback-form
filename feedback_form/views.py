@@ -1,4 +1,5 @@
 """Views for the ``feedback_form`` app."""
+from django.core.urlresolvers import reverse
 from django.views.generic import CreateView
 
 from .forms import FeedbackForm
@@ -15,3 +16,6 @@ class FeedbackCreateView(CreateView):
         if self.request.user.is_authenticated():
             kwargs.update({'user': self.request.user})
         return kwargs
+
+    def get_success_url(self):
+        return reverse('feedback_form')
