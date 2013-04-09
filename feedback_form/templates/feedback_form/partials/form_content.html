@@ -1,0 +1,5 @@
+{% load i18n %}
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="{% trans "Send Feedback" %}" />
+<a id="feedbackClose" href="#">{% trans "close" %}</a>

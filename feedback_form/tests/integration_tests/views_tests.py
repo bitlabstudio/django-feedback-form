@@ -24,3 +24,7 @@ class FeedbackCreateViewTestCase(ViewTestMixin, TestCase):
         self.assertEqual(Feedback.objects.all().count(), 1)
         self.assertEqual(Feedback.objects.all()[0].message, 'Foo')
         self.assertEqual(Feedback.objects.all()[0].current_url, '/feedback/')
+
+        # Test AJAX
+        self.is_callable(method='post', data={'message': 'Foo'}, ajax=True)
+        self.is_callable(ajax=True)

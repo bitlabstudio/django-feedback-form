@@ -26,6 +26,8 @@ class FeedbackForm(forms.ModelForm):
         if user:
             self.instance.user = user
             del self.fields['email']
+        else:
+            self.fields['email'].required = True
 
     def save(self):
         if not self.cleaned_data.get('url'):
