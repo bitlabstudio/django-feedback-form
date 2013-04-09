@@ -9,6 +9,7 @@ South
 # ==============================================================
 # Packages needed for running the tests. Needed by contributors.
 # ==============================================================
+django-libs==1.3
 factory_boy
 flake8
 nose

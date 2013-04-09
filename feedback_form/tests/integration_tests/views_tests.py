@@ -1,0 +1,15 @@
+"""Tests for the views of the ``feedback_form`` app."""
+from django.test import TestCase
+
+from django_libs.tests.mixins import ViewTestMixin
+
+
+class FeedbackCreateViewTestCase(ViewTestMixin, TestCase):
+    """Tests for the ``FeedbackCreateView`` generic view."""
+    longMessage = True
+
+    def get_view_name(self):
+        return 'feedback_form'
+
+    def test_view(self):
+        self.is_callable()
