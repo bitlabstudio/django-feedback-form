@@ -3,6 +3,7 @@ import os
 
 from django import forms
 from django.conf import settings
+from django.core.urlresolvers import reverse
 
 from django_libs.utils_email import send_email
 
@@ -20,7 +21,8 @@ class FeedbackForm(forms.ModelForm):
 
     def __init__(self, user=None, url=None, *args, **kwargs):
         super(FeedbackForm, self).__init__(*args, **kwargs)
-        self.url = None
+        if url:
+            self.instance.current_url = url
         if user:
             self.instance.user = user
             del self.fields['email']
@@ -31,7 +33,8 @@ class FeedbackForm(forms.ModelForm):
             send_email(
                 '',
                 {
-                    'url': self.url,
+                    'url': reverse('admin:feedback_form_feedback_change',
+                                   args=(obj.id, )),
                     'email': obj.user or obj.email,
                     'date': obj.creation_date,
                     'message': obj.message,

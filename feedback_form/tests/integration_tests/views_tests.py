@@ -23,3 +23,4 @@ class FeedbackCreateViewTestCase(ViewTestMixin, TestCase):
         self.is_callable(method='post', data={'message': 'Foo'})
         self.assertEqual(Feedback.objects.all().count(), 1)
         self.assertEqual(Feedback.objects.all()[0].message, 'Foo')
+        self.assertEqual(Feedback.objects.all()[0].current_url, '/feedback/')
