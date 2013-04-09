@@ -5,5 +5,11 @@
 {% endblock %}
 
 {% block main %}
-{% include "feedback_form/partials/form.html" %}
+<div id="feedbackDisplayWrapper">
+    {% include "feedback_form/partials/form.html" %}
+</div>
+{% endblock %}
+
+{% block extrajs %}
+{{ form.media.js }}
 {% endblock %}

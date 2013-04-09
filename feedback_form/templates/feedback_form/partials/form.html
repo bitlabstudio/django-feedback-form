@@ -1,6 +1,9 @@
 {% load i18n %}
-<form method="post" action=".">
+{% load url from future %}
+<a id="feedbackSnippet" href="{% url "feedback_form" %}"></a>
+<form id="feedbackForm" method="post" action="{% url "feedback_form" %}">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="{% trans "Send Feedback" %}" />
+    <a id="feedbackClose" href="#">{% trans "close" %}</a>
 </form>
