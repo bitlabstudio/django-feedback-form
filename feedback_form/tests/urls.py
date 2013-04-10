@@ -16,7 +16,7 @@ urlpatterns = patterns(
     '',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^feedback/', include('feedback_form.urls')),
-    url(r'', TemplateView.as_view(template_name='base.html')),
+    url(r'^test/$', TemplateView.as_view(template_name='base.html')),
 )
 
 urlpatterns += staticfiles_urlpatterns()
