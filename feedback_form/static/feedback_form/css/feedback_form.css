@@ -8,7 +8,6 @@
     width: 300px;
     margin-left: -160px;
     margin-top: -150px;
-    background: #6caec9;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
@@ -75,11 +74,12 @@
     position:relative;
     top:1px;
 }
-#feedbackForm p {
+#feedbackForm p, #feedbackForm h3 {
     margin: 0;
+    padding: 0;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 #feedbackForm #feedbackClose {
-    color: #6caec9;
     bottom: 100%;
     right: 0;
     position: absolute;
@@ -107,6 +107,12 @@
     -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
 }
+#feedbackForm #feedbackText h3 {
+    margin: 2px 0 5px;
+}
+#feedbackForm #feedbackText p {
+    margin: 2px 0 10px;
+}
 
 #feedbackSnippet {
     position: fixed;
@@ -114,7 +120,7 @@
     top: 30%;
     height: 200px;
     width: 45px;
-    background: #6caec9 url(../img/feedback.png) no-repeat right center;
+    background: url(../img/feedback.png) no-repeat right center;
     -webkit-border-radius: 0 15px 15px 0;
     -moz-border-radius: 0 15px 15px 0;
     border-radius: 0 15px 15px 0;
@@ -130,7 +136,7 @@
 #feedbackSuccess {
     position: fixed;
     display: none;
-    text-shadow:1px 1px 0px #51A31B;
+    text-shadow:1px 1px 0px rgba(0, 0, 0, 0.2);
     color: #fff;
     text-align: center;
     left: 10px;

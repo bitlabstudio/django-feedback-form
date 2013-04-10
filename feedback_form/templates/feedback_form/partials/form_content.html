@@ -1,5 +1,8 @@
 {% load i18n %}
 {% csrf_token %}
+<div style="color: {{ text_color }};" id="feedbackText">
+    {{ text|safe }}
+</div>
 {{ form.as_p }}
 <input type="submit" value="{% trans "Send Feedback" %}" />
-<a id="feedbackClose" href="#">{% trans "close" %}</a>
+<a id="feedbackClose" href="#" style="color: {{ background_color }};">{% trans "close" %}</a>

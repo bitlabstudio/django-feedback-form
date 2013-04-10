@@ -1,6 +1,7 @@
 """Template tags and filters for the ``feedback_form`` app."""
 from django import template
 
+from ..app_settings import *  # NOQA
 from ..forms import FeedbackForm
 
 register = template.Library()
@@ -13,5 +14,8 @@ def feedback_form(context):
     if context['request'].user.is_authenticated():
         user = context['request'].user
     return {
-        'form': FeedbackForm(url=context['request'].path, user=user)
+        'form': FeedbackForm(url=context['request'].path, user=user),
+        'background_color': FEEDBACK_FORM_COLOR,
+        'text_color': FEEDBACK_FORM_TEXTCOLOR,
+        'text': FEEDBACK_FORM_TEXT,
     }

@@ -1,7 +1,7 @@
 {% load url from future %}
 {% load i18n %}
-<a id="feedbackSnippet" href="{% url "feedback_form" %}"></a>
+<a id="feedbackSnippet" href="{% url "feedback_form" %}" style="background-color: {{ background_color }};"></a>
 <p id="feedbackSuccess">{% trans "Thank you!" %}</p>
-<form id="feedbackForm" method="post" action="{% url "feedback_form" %}">
+<form id="feedbackForm" method="post" action="{% url "feedback_form" %}" style="background-color: {{ background_color }};">
     {% include "feedback_form/partials/form_content.html" %}
 </form>
