@@ -3,6 +3,7 @@
 #feedbackForm {
     display: none;
     position: fixed;
+    z-index: 1299;
     left: 50%;
     top: 50%;
     width: 300px;
@@ -117,6 +118,7 @@
 
 #feedbackSnippet {
     position: fixed;
+    z-index: 1298;
     left: -5px;
     top: 30%;
     height: 200px;
@@ -137,6 +139,7 @@
 #feedbackSuccess {
     position: fixed;
     display: none;
+    z-index: 1300;
     text-shadow:1px 1px 0px rgba(0, 0, 0, 0.2);
     color: #fff;
     text-align: center;
