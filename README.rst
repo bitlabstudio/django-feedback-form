@@ -19,7 +19,7 @@ Installation
 
 To get the latest stable release from PyPi::
 
-    $ pip install django-feedback-form (not available at the moment)
+    $ pip install django-feedback-form
 
 To get the latest commit from GitHub::
 
@@ -63,17 +63,19 @@ That's it!
 You can easily customize your form by changing static files or by changing the
 following ``settings``:
 
-### FEEDBACK_FORM_TEXTCOLOR
+__FEEDBACK_FORM_TEXTCOLOR__
 
 By default the text color is white like ``'#fff'``.
 
+***
 
-### FEEDBACK_FORM_COLOR
+__FEEDBACK_FORM_COLOR__
 
 By default the background color is light blue like ``'#6caec9'``.
 
+***
 
-### FEEDBACK_FORM_TEXT
+__FEEDBACK_FORM_TEXT__
 
 By default the text in the form is invisible. Just add the html markup you want
 to be displayed above the input fields, like::
