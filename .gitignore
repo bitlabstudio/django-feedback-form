@@ -1,6 +1,8 @@
 *.pyc
 *.sql
 *.wpr
+dist/
+django_feedback_form.egg-info/
 coverage/
 db.sqlite
 media/
