@@ -1,4 +1,4 @@
-#feedbackForm #id_url, #feedbackForm label {display: none;}
+#feedbackForm #id_feedback-url, #feedbackForm label {display: none;}
 
 #feedbackForm {
     display: none;

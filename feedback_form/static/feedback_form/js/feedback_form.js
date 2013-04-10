@@ -36,6 +36,13 @@ $(document).ready(function() {
     $('#feedbackSnippet').click(function() {
         $(this).animate({left: '-100'});
         $('#feedbackForm').fadeIn();
+        $('html').click(function() {
+            hideForm();
+         });
+
+         $('#feedbackForm').click(function(event){
+            event.stopPropagation();
+         });
         return false;
     });
 });

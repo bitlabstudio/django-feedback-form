@@ -14,13 +14,13 @@ class FeedbackForm(forms.ModelForm):
     """
     A feedback form with modern spam protection.
 
-    :url:
+    :url: Field to trap spam bots.
 
     """
     url = forms.URLField(required=False)
 
     def __init__(self, user=None, url=None, *args, **kwargs):
-        super(FeedbackForm, self).__init__(*args, **kwargs)
+        super(FeedbackForm, self).__init__(prefix='feedback', *args, **kwargs)
         if url:
             self.instance.current_url = url
         if user:

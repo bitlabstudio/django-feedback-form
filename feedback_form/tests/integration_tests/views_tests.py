@@ -20,11 +20,12 @@ class FeedbackCreateViewTestCase(ViewTestMixin, TestCase):
     def test_view(self):
         self.should_be_callable_when_anonymous()
         self.should_be_callable_when_authenticated(self.user)
-        self.is_callable(method='post', data={'message': 'Foo'})
+        self.is_callable(method='post', data={'feedback-message': 'Foo'})
         self.assertEqual(Feedback.objects.all().count(), 1)
         self.assertEqual(Feedback.objects.all()[0].message, 'Foo')
         self.assertEqual(Feedback.objects.all()[0].current_url, '/feedback/')
 
         # Test AJAX
-        self.is_callable(method='post', data={'message': 'Foo'}, ajax=True)
+        self.is_callable(method='post', data={'feedback-message': 'Foo'},
+                         ajax=True)
         self.is_callable(ajax=True)

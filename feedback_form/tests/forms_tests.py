@@ -14,9 +14,9 @@ class FeedbackFormTestCase(TestCase):
 
     def test_form(self):
         data = {
-            'email': 'test@example.com',
-            'message': 'Foo',
-            'url': 'http://www.example.com',
+            'feedback-email': 'test@example.com',
+            'feedback-message': 'Foo',
+            'feedback-url': 'http://www.example.com',
         }
         form = FeedbackForm(data=data)
         self.assertTrue(form.is_valid())
@@ -25,7 +25,7 @@ class FeedbackFormTestCase(TestCase):
         self.assertEqual(Feedback.objects.all().count(), 0)
 
         # Valid post
-        data.update({'url': ''})
+        data.update({'feedback-url': ''})
         form = FeedbackForm(data=data)
         self.assertTrue(form.is_valid())
         form.save()
@@ -38,7 +38,7 @@ class FeedbackFormTestCase(TestCase):
 
         # Valid post with user account
         user = UserFactory()
-        data.update({'email': ''})
+        data.update({'feedback-email': ''})
         form = FeedbackForm(data=data, user=user)
         self.assertTrue(form.is_valid())
         form.save()
