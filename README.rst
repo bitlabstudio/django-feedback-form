@@ -1,4 +1,5 @@
-# Django Feedback Form
+Django Feedback Form
+====================
 
 Minified JQuery & Ajax feedback form to handle fast customer requests in Django
 
@@ -12,7 +13,8 @@ You need at least the following packages in your virtualenv:
 * South
 
 
-## Installation
+Installation
+------------
 
 To get the latest stable release from PyPi::
 
@@ -36,7 +38,8 @@ Run the south migrations to create the app's database tables::
     $ ./manage.py migrate feedback_form
 
 
-## Usage
+Usage
+-----
 
 First of all add the feedback urls to your main urls.py::
 
@@ -59,15 +62,18 @@ That's it!
 You can easily customize your form by changing static files or by changing the
 following ``settings``:
 
-### FEEDBACK_FORM_TEXTCOLOR
+FEEDBACK_FORM_TEXTCOLOR
++++++++++++++++++++++++
 
 By default the text color is white like ``'#fff'``.
 
-### FEEDBACK_FORM_COLOR
+FEEDBACK_FORM_COLOR
++++++++++++++++++++
 
 By default the background color is light blue like ``'#6caec9'``.
 
-### FEEDBACK_FORM_TEXT
+FEEDBACK_FORM_TEXT
+++++++++++++++++++
 
 By default the text in the form is invisible. Just add the html markup you want
 to be displayed above the input fields, like::
@@ -76,6 +82,7 @@ to be displayed above the input fields, like::
     <p>We'll answer as fast as possible.</p>
 
 
-## Roadmap
+Roadmap
+-------
 
 See the issue tracker for current and upcoming features.
