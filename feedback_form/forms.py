@@ -1,6 +1,4 @@
 """Forms for the ``feedback_form`` app."""
-import os
-
 from django import forms
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -50,14 +48,8 @@ class FeedbackForm(forms.ModelForm):
             return obj
 
     class Media:
-        css = {
-            'all': (os.path.join(
-                settings.STATIC_URL, 'feedback_form/css/feedback_form.css'), )
-        }
-        js = (
-            os.path.join(
-                settings.STATIC_URL, 'feedback_form/js/feedback_form.js', ),
-        )
+        css = {'all': ('feedback_form/css/feedback_form.css'), }
+        js = ('feedback_form/js/feedback_form.js', )
 
     class Meta:
         model = Feedback

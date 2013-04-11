@@ -12,7 +12,7 @@ class FeedbackAdmin(admin.ModelAdmin):
         'creation_date', 'user_email', 'current_url', 'message_excerpt', ]
     list_filter = ['creation_date', 'current_url', ]
     date_hierarchy = 'creation_date'
-    search_fields = ['user__email', 'email', 'current_url', 'message' ]
+    search_fields = ['user__email', 'email', 'current_url', 'message', ]
 
     def message_excerpt(self, obj):
         return truncatewords(obj.message, 10)

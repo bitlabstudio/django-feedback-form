@@ -3,7 +3,8 @@ Django Feedback Form
 
 Minified JQuery & Ajax feedback form to handle fast customer requests in Django
 
-## Prerequisites
+Prerequisites
+-------------
 
 You need at least the following packages in your virtualenv:
 
