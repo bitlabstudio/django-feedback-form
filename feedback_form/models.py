@@ -17,6 +17,7 @@ class Feedback(models.Model):
     user = models.ForeignKey(
         'auth.User',
         verbose_name=_('User'),
+        related_name='feedback_form_submissions',
         blank=True, null=True,
     )
 
