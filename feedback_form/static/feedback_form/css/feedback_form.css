@@ -198,3 +198,34 @@
 #feedbackDisplayWrapper > #feedbackSnippet {
     display: none;
 }
+
+@media all and (max-width: 767px) {
+    #feedbackSnippet {
+        left: auto;
+        right: 0px;
+        top: auto;
+        bottom: -4px;
+        margin-top: 0px;
+        height: 36px;
+        width: 180px;
+        background: url(../img/feedback_mobile.png) no-repeat right center;
+        -webkit-border-radius: 15px 0 0 0;
+        -moz-border-radius: 15px 0 0 0;
+        border-radius: 15px 0 0 0;
+    }
+    #feedbackSnippet:hover {
+        -webkit-transform: translateY(-4px);
+        -moz-transform: translateY(-4px);
+        -o-transform: translateY(-4px);
+        -ms-transform: translateY(-4px);
+        transform: translateY(-4px);
+    }
+
+    #feedbackSuccess {
+        margin: 0;
+        left: auto;
+        right: 10px;
+        top: auto;
+        bottom: 40px;
+    }
+}
