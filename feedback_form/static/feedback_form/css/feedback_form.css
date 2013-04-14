@@ -83,10 +83,19 @@
 }
 #feedbackForm #feedbackClose {
     bottom: 100%;
-    right: 0;
+    right: 10px;
     position: absolute;
     font-size: 0.8em;
-    margin-bottom: 3px;
+    padding: 2px 7px;
+    background: #fff;
+    -moz-border-radius: 8px 8px 0 0;
+    -webkit-border-radius: 8px 8px 0 0;
+    border-radius: 8px 8px 0 0;
+    -webkit-box-shadow: 0px 0px 15px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 15px rgba(0,0,0,0.15);
+    -o-box-shadow: 0px 0px 15px rgba(0,0,0,0.15);
+    -ms-box-shadow: 0px 0px 15px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.15);
 }
 #feedbackForm ul.errorlist {
     margin: 0;
