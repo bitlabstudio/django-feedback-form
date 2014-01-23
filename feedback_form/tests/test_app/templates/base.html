@@ -4,14 +4,26 @@
 <meta charset="UTF-8">
 <title></title>
 {% block extracss %}
-<link href="{{ STATIC_URL }}feedback_form/css/feedback_form.css" type="text/css" media="all" rel="stylesheet" />
+    <link href="{{ STATIC_URL }}feedback_form/css/feedback_form.css" type="text/css" media="all" rel="stylesheet" />
 {% endblock %}
 </head>
 <body style="background-color: #aaaaaa;">
-{% block main %}{% feedback_form %}{% endblock %}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-{% block extrajs %}
-<script type="text/javascript" src="{{ STATIC_URL }}feedback_form/js/feedback_form.js"></script>
-{% endblock %}
+    {% block main %}
+        {% feedback_form %}
+        <table>
+            {% for user in object_list %}
+                <tr>
+                    <th>{{ user.username }}</th>
+                    <td>
+                        <a href="{% url "feedback_form_content_object" c_type='user' obj_id=user.pk %}">Report this user!</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    {% block extrajs %}
+        <script type="text/javascript" src="{{ STATIC_URL }}feedback_form/js/feedback_form.js"></script>
+    {% endblock %}
 </body>
 </html>

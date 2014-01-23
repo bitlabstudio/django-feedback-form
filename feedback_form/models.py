@@ -1,4 +1,6 @@
 """Models for the ``feedback_form`` app."""
+from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -12,6 +14,7 @@ class Feedback(models.Model):
     :current_url: URL of the current page.
     :message: Feedback text.
     :creation_date: Datetime of the feedback creation.
+    :content_object: Optional related object the feedback is referring to.
 
     """
     user = models.ForeignKey(
@@ -41,6 +44,15 @@ class Feedback(models.Model):
         auto_now_add=True,
         verbose_name=_('Creation Date'),
     )
+
+    # Generic FK to the object this feedback is about
+    content_type = models.ForeignKey(
+        ContentType,
+        related_name='feedback_content_objects',
+        null=True, blank=True,
+    )
+    object_id = models.PositiveIntegerField(null=True, blank=True)
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
 
     class Meta:
         ordering = ['-creation_date']

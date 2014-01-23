@@ -17,7 +17,9 @@ class FeedbackForm(forms.ModelForm):
     """
     url = forms.URLField(required=False)
 
-    def __init__(self, user=None, url=None, *args, **kwargs):
+    def __init__(self, user=None, url=None, prefix='feedback',
+                 content_object=None, *args, **kwargs):
+        self.content_object = content_object
         super(FeedbackForm, self).__init__(prefix='feedback', *args, **kwargs)
         if url:
             self.instance.current_url = url
@@ -29,6 +31,7 @@ class FeedbackForm(forms.ModelForm):
 
     def save(self):
         if not self.cleaned_data.get('url'):
+            self.instance.content_object = self.content_object
             obj = super(FeedbackForm, self).save()
             send_email(
                 '',

@@ -1,14 +1,16 @@
 Django Feedback Form
 ====================
 
-Minified JQuery & Ajax feedback form to handle fast customer requests in Django
+Minified JQuery & Ajax feedback/report form to handle fast customer requests in
+Django. You can use it as a fast feedback tool and/or to report objects (e.g.
+in case of abuse).
 
 Prerequisites
 -------------
 
 You need at least the following packages in your virtualenv:
 
-* Django 1.4
+* Django
 * Django Mailer
 * Django Libs
 * South
@@ -60,6 +62,10 @@ Pretty ugly, eh? Now, you need to add css and js for sure, like this::
     <script type="text/javascript" src="{{ STATIC_URL }}feedback_form/js/feedback_form.js"></script>
 
 That's it!
+You can also use this app as a report tool. Simply call another url::
+
+    <a href="{% url "feedback_form_content_object" c_type='user' obj_id=user.pk %}">Report this user!</a>
+
 You can easily customize your form by changing static files or by changing the
 following ``settings``:
 
