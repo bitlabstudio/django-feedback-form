@@ -72,6 +72,7 @@ EXTERNAL_APPS = [
     'django.contrib.sites',
     'django_nose',
     'mailer',
+    'django_libs',
 ]
 
 INTERNAL_APPS = [

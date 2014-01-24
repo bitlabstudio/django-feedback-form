@@ -1,1 +1,1 @@
-{% load i18n %}{% trans "New feedback has arrived" %}
+{% load i18n %}{% if feedback.content_object %}{% trans "New report has arrived" %}{% else %}{% trans "New feedback has arrived" %}{% endif %}

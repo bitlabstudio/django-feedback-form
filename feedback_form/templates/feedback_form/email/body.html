@@ -1,8 +1,18 @@
-{% load i18n %}
-{% trans "A new feedback has been posted:" %}
+{% load i18n libs_tags %}
+<h2>
+    {% if feedback.content_object %}
+        {% trans "A new report has been posted:" %}
+    {% else %}
+        {% trans "A new feedback has been posted:" %}
+    {% endif %}
+</h2>
 
 <p>{% trans "URL" %}: {{ url }}</p>
-<p>{% trans "Email" %}: {{ email }}</p>
-<p>{% trans "Date" %}: {{ date|date }}</p>
+{% if feedback.content_object %}
+    <p>{% trans "Object type" %}: {{ feedback.content_object|get_content_type:'model' }}</p>
+    <p>{% trans "Object PK" %}: {{ feedback.content_object.pk }}</p>
+{% endif %}
+<p>{% trans "Email" %}: {{ feedback.email }}</p>
+<p>{% trans "Date" %}: {{ feedback.creation_date|date }}</p>
 <hr />
-<p>{{ message }}</p>
+<p>{{ feedback.message }}</p>

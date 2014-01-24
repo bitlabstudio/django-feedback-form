@@ -38,9 +38,7 @@ class FeedbackForm(forms.ModelForm):
                 {
                     'url': reverse('admin:feedback_form_feedback_change',
                                    args=(obj.id, )),
-                    'email': obj.user or obj.email,
-                    'date': obj.creation_date,
-                    'message': obj.message,
+                    'feedback': obj,
                 },
                 'feedback_form/email/subject.html',
                 'feedback_form/email/body.html',

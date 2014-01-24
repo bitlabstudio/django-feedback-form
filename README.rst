@@ -34,6 +34,7 @@ Add the app to your ``INSTALLED_APPS``::
         'django',
         'mailer',
         'feedback_form',
+        'django_libs',
     ]
 
 Run the south migrations to create the app's database tables::

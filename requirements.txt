@@ -6,7 +6,7 @@
 django==1.6.1
 -e git+https://github.com/pinax/django-mailer.git@bd6d1a75f63a398631bcba010005cdb8bd803edd#egg=mailer
 South==0.8.4
-django-libs==1.35.2
+django-libs==1.38
 
 # ==============================================================
 # Packages needed for running the tests. Needed by contributors.
