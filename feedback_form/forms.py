@@ -42,7 +42,6 @@ class FeedbackForm(forms.ModelForm):
                 },
                 'feedback_form/email/subject.html',
                 'feedback_form/email/body.html',
-                'feedback_form/email/body_plain.html',
                 from_email=settings.FROM_EMAIL,
                 recipients=[manager[1] for manager in settings.MANAGERS],
             )
