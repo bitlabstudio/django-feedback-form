@@ -1,5 +1,9 @@
 === ongoing ===
 
+=== 1.0 ===
+
+- Updated requirements
+
 === 0.3.1 ===
 
 - Improved email templates.
