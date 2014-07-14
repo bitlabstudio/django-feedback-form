@@ -45,6 +45,20 @@ class FeedbackForm(forms.ModelForm):
                 from_email=settings.FROM_EMAIL,
                 recipients=[manager[1] for manager in settings.MANAGERS],
             )
+            if getattr(settings, 'FEEDBACK_EMAIL_CONFIRMATION', False):
+                email = None
+                if obj.email:
+                    email = obj.email
+                elif obj.user.email:
+                    email = obj.user.email
+                if email:
+                    send_email(
+                        '', {},
+                        'feedback_form/email/confirmation_subject.html',
+                        'feedback_form/email/confirmation_body.html',
+                        from_email=settings.FROM_EMAIL,
+                        recipients=[email],
+                    )
             return obj
 
     class Media:

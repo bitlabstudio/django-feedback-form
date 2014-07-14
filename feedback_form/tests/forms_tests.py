@@ -24,25 +24,27 @@ class FeedbackFormTestCase(TestCase):
         self.assertEqual(Message.objects.all().count(), 0)
         self.assertEqual(Feedback.objects.all().count(), 0)
 
-        # Valid post
-        data.update({'feedback-url': ''})
-        form = FeedbackForm(data=data)
-        self.assertTrue(form.is_valid())
-        form.save()
-        self.assertEqual(Message.objects.all().count(), 1)
-        self.assertEqual(Feedback.objects.all().count(), 1)
-        self.assertEqual(Feedback.objects.all()[0].message, 'Foo')
-        self.assertEqual(Feedback.objects.all()[0].email, 'test@example.com')
-        Feedback.objects.all()[0].delete()
-        Message.objects.all()[0].delete()
+        with self.settings(FEEDBACK_EMAIL_CONFIRMATION=True):
+            # Valid post
+            data.update({'feedback-url': ''})
+            form = FeedbackForm(data=data)
+            self.assertTrue(form.is_valid())
+            form.save()
+            self.assertEqual(Message.objects.all().count(), 2)
+            self.assertEqual(Feedback.objects.all().count(), 1)
+            self.assertEqual(Feedback.objects.all()[0].message, 'Foo')
+            self.assertEqual(Feedback.objects.all()[0].email,
+                             'test@example.com')
+            Feedback.objects.all()[0].delete()
+            Message.objects.all()[0].delete()
 
-        # Valid post with user account
-        user = UserFactory()
-        data.update({'feedback-email': ''})
-        form = FeedbackForm(data=data, user=user)
-        self.assertTrue(form.is_valid())
-        form.save()
-        self.assertEqual(Message.objects.all().count(), 1)
-        self.assertEqual(Feedback.objects.all().count(), 1)
-        self.assertEqual(Feedback.objects.all()[0].message, 'Foo')
-        self.assertEqual(Feedback.objects.all()[0].user, user)
+            # Valid post with user account
+            user = UserFactory()
+            data.update({'feedback-email': ''})
+            form = FeedbackForm(data=data, user=user)
+            self.assertTrue(form.is_valid())
+            form.save()
+            self.assertEqual(Message.objects.all().count(), 3)
+            self.assertEqual(Feedback.objects.all().count(), 1)
+            self.assertEqual(Feedback.objects.all()[0].message, 'Foo')
+            self.assertEqual(Feedback.objects.all()[0].user, user)

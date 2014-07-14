@@ -1,5 +1,7 @@
 === ongoing ===
 
+- Added confirmation email
+
 === 1.0 ===
 
 - Updated requirements

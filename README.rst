@@ -90,6 +90,14 @@ to be displayed above the input fields, like::
     <p>We'll answer as fast as possible.</p>
 
 
+FEEDBACK_EMAIL_CONFIRMATION
++++++++++++++++++++++++++++
+
+Default: False
+
+Sends a confirmation email to the feedback poster.
+
+
 Roadmap
 -------
 
