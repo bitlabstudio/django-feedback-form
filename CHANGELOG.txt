@@ -1,5 +1,7 @@
 === ongoing ===
 
+=== 1.1 ===
+
 - Added confirmation email
 
 === 1.0 ===
