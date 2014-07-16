@@ -1,4 +1,6 @@
 === ongoing ===
+
+=== 1.2 ===
  
 - Extended url field to 4000 chars
 
