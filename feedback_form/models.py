@@ -31,7 +31,7 @@ class Feedback(models.Model):
 
     current_url = models.URLField(
         verbose_name=_('Current URL'),
-        max_length=50,
+        max_length=4000,
         blank=True,
     )
 
