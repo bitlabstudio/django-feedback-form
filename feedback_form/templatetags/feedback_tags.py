@@ -11,10 +11,13 @@ register = template.Library()
 def feedback_form(context):
     """Template tag to render a feedback form."""
     user = None
-    if context['request'].user.is_authenticated():
-        user = context['request'].user
+    url = None
+    if context.get('request'):
+        url = context['request'].path
+        if context['request'].user.is_authenticated():
+            user = context['request'].user
     return {
-        'form': FeedbackForm(url=context['request'].path, user=user),
+        'form': FeedbackForm(url=url, user=user),
         'background_color': FEEDBACK_FORM_COLOR,
         'text_color': FEEDBACK_FORM_TEXTCOLOR,
         'text': FEEDBACK_FORM_TEXT,
