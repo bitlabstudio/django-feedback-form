@@ -1,5 +1,7 @@
 === ongoing ===
 
+=== 1.2.1 ===
+
 - fixed email template
 
 === 1.2 ===
