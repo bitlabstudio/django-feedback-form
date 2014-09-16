@@ -1,7 +1,9 @@
 === ongoing ===
 
+- fixed email template
+
 === 1.2 ===
- 
+
 - Extended url field to 4000 chars
 
 === 1.1 ===

@@ -12,7 +12,11 @@
     <p>{% trans "Object type" %}: {{ feedback.content_object|get_content_type:'model' }}</p>
     <p>{% trans "Object PK" %}: {{ feedback.content_object.pk }}</p>
 {% endif %}
-<p>{% trans "Email" %}: {{ feedback.email }}</p>
+{% if feedback.email %}
+    <p>{% trans "Email" %}: {{ feedback.email }}</p>
+{% else %}
+    <p>{% trans "Email" %}: {{ feedback.user.email }}</p>
+{% endif %}
 <p>{% trans "Date" %}: {{ feedback.creation_date|date }}</p>
 <hr />
 <p>{{ feedback.message }}</p>
