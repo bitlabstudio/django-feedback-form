@@ -26,5 +26,6 @@ setup(
     install_requires=[
         'django',
         'django-libs',
+        'django-mailer',
     ],
 )
