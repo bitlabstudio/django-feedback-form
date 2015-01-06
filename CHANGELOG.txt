@@ -1,5 +1,9 @@
 === ongoing ===
 
+=== 1.2.2 ===
+
+- Changed migrations to make use of a custom user model
+
 === 1.2.1 ===
 
 - fixed email template
