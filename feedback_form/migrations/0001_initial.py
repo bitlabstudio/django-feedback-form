@@ -5,6 +5,20 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+try:
+    from django.contrib.auth import get_user_model
+except ImportError:  # Django < 1.5
+    from django.contrib.auth.models import User
+else:
+    User = get_user_model()
+
+
+USER_MODEL = {
+    'orm_label': '%s.%s' % (User._meta.app_label, User._meta.object_name),
+    'model_label': '%s.%s' % (User._meta.app_label, User._meta.module_name),
+    'object_name': User.__name__,
+}
+
 
 class Migration(SchemaMigration):
 
@@ -12,7 +26,7 @@ class Migration(SchemaMigration):
         # Adding model 'Feedback'
         db.create_table('feedback_form_feedback', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm[USER_MODEL['orm_label']], null=True, blank=True)),
             ('email', self.gf('django.db.models.fields.EmailField')(max_length=75, blank=True)),
             ('current_url', self.gf('django.db.models.fields.URLField')(max_length=50, blank=True)),
             ('message', self.gf('django.db.models.fields.TextField')(max_length=4000)),
@@ -40,8 +54,8 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
-        'auth.user': {
-            'Meta': {'object_name': 'User'},
+        USER_MODEL['model_label']: {
+            'Meta': {'object_name': USER_MODEL['object_name']},
             'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
@@ -70,7 +84,7 @@ class Migration(SchemaMigration):
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'message': ('django.db.models.fields.TextField', [], {'max_length': '4000'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'null': 'True', 'blank': 'True'})
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['%s']" % USER_MODEL['orm_label'], 'null': 'True', 'blank': 'True'})
         }
     }
 
