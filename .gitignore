@@ -1,9 +1,10 @@
 *.pyc
 *.sql
-*.wpr
 dist/
 django_feedback_form.egg-info/
+.coverage
 coverage/
 db.sqlite
 media/
 local_settings.py
+.tox

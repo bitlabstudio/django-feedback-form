@@ -27,5 +27,6 @@ setup(
         'django',
         'django-libs',
         'django-mailer',
+        'beautifulsoup4',
     ],
 )

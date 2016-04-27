@@ -11,9 +11,8 @@ Prerequisites
 You need at least the following packages in your virtualenv:
 
 * Django
-* Django Mailer
-* Django Libs
-* South
+* django-mailer
+* django-libs
 
 
 Installation
@@ -37,7 +36,7 @@ Add the app to your ``INSTALLED_APPS``::
         'django_libs',
     ]
 
-Run the south migrations to create the app's database tables::
+Run the migrations to create the app's database tables::
 
     $ ./manage.py migrate feedback_form
 
@@ -58,9 +57,10 @@ to e.g. your base.html::
 
 Pretty ugly, eh? Now, you need to add css and js for sure, like this::
 
-    <link href="{{ STATIC_URL }}feedback_form/css/feedback_form.css" type="text/css" media="all" rel="stylesheet" />
+    {% load staticfiles %}
+    <link href="{% static "feedback_form/css/feedback_form.css" %}" type="text/css" media="all" rel="stylesheet" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}feedback_form/js/feedback_form.js"></script>
+    <script type="text/javascript" src="{% static "feedback_form/js/feedback_form.js" %}"></script>
 
 That's it!
 You can also use this app as a report tool. Simply call another url::
@@ -96,9 +96,3 @@ FEEDBACK_EMAIL_CONFIRMATION
 Default: False
 
 Sends a confirmation email to the feedback poster.
-
-
-Roadmap
--------
-
-See the issue tracker for current and upcoming features.

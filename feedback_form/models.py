@@ -1,11 +1,13 @@
 """Models for the ``feedback_form`` app."""
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.conf import settings
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 
+@python_2_unicode_compatible
 class Feedback(models.Model):
     """
     Holds information about one user feedback.
@@ -53,12 +55,12 @@ class Feedback(models.Model):
         null=True, blank=True,
     )
     object_id = models.PositiveIntegerField(null=True, blank=True)
-    content_object = generic.GenericForeignKey('content_type', 'object_id')
+    content_object = GenericForeignKey('content_type', 'object_id')
 
     class Meta:
         ordering = ['-creation_date']
 
-    def __unicode__(self):
+    def __str__(self):
         if self.user:
             return '{0} - {1}'.format(self.creation_date, self.user)
         elif self.email:

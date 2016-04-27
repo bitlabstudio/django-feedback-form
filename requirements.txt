@@ -1,19 +1,7 @@
-# Install these requirements if you wish to contribute to this project.
-
 # ===========================================================================
 # Packages essential to this app. Needed by anyone who wants to use this app.
 # ===========================================================================
-django==1.6.5
--e git+https://github.com/pinax/django-mailer.git@bd6d1a75f63a398631bcba010005cdb8bd803edd#egg=mailer
-South==0.8.4
-django-libs==1.57.1
-
-# ==============================================================
-# Packages needed for running the tests. Needed by contributors.
-# ==============================================================
-coverage==3.7.1
-django-coverage==1.2.4
-django-nose==1.2
-factory_boy==2.3.1
-flake8==2.1.0
-ipdb==0.8
+django
+django-mailer
+django-libs
+beautifulsoup4

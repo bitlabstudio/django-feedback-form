@@ -1,7 +1,7 @@
 """Tests for the models of the ``feedback_form`` app."""
 from django.test import TestCase
 
-from ..models import Feedback
+from mixer.backend.django import mixer
 
 
 class FeedbackTestCase(TestCase):
@@ -10,5 +10,10 @@ class FeedbackTestCase(TestCase):
 
     def test_instantiation(self):
         """Test if the ``Feedback`` model instantiates."""
-        feedback = Feedback()
-        self.assertTrue(feedback, msg='Should be correctly instantiated.')
+        feedback = mixer.blend('feedback_form.Feedback')
+        self.assertTrue(str(feedback))
+        feedback = mixer.blend('feedback_form.Feedback',
+                               user=mixer.blend('auth.User'))
+        self.assertTrue(str(feedback))
+        feedback = mixer.blend('feedback_form.Feedback', email='')
+        self.assertTrue(str(feedback))

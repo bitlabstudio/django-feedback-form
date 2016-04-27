@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block extracss %}
-{{ form.media.css }}
+  {{ form.media.css }}
 {% endblock %}
 
 {% block main %}
-<div id="feedbackDisplayWrapper">
+  <div id="feedbackDisplayWrapper">
     {% include "feedback_form/partials/form.html" %}
-</div>
+  </div>
 {% endblock %}
 
 {% block extrajs %}
-{{ form.media.js }}
+  {{ form.media.js }}
 {% endblock %}

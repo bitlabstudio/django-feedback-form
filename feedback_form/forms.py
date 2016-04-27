@@ -32,13 +32,13 @@ class FeedbackForm(forms.ModelForm):
     def save(self):
         if not self.cleaned_data.get('url'):
             self.instance.content_object = self.content_object
-            obj = super(FeedbackForm, self).save()
+            self.instance = super(FeedbackForm, self).save()
             send_email(
                 '',
                 {
                     'url': reverse('admin:feedback_form_feedback_change',
-                                   args=(obj.id, )),
-                    'feedback': obj,
+                                   args=(self.instance.id, )),
+                    'feedback': self.instance,
                 },
                 'feedback_form/email/subject.html',
                 'feedback_form/email/body.html',
@@ -47,10 +47,10 @@ class FeedbackForm(forms.ModelForm):
             )
             if getattr(settings, 'FEEDBACK_EMAIL_CONFIRMATION', False):
                 email = None
-                if obj.email:
-                    email = obj.email
-                elif obj.user.email:
-                    email = obj.user.email
+                if self.instance.email:
+                    email = self.instance.email
+                elif self.instance.user.email:
+                    email = self.instance.user.email
                 if email:
                     send_email(
                         '', {},
@@ -59,7 +59,7 @@ class FeedbackForm(forms.ModelForm):
                         from_email=settings.FROM_EMAIL,
                         recipients=[email],
                     )
-            return obj
+            return self.instance
 
     class Media:
         css = {'all': ('feedback_form/css/feedback_form.css'), }

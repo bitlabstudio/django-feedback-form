@@ -3,7 +3,7 @@ from django.contrib.auth.models import AnonymousUser
 from django.template import Template, RequestContext
 from django.test import TestCase, RequestFactory
 
-from django_libs.tests.factories import UserFactory
+from mixer.backend.django import mixer
 
 
 class FeedbackFormTestCase(TestCase):
@@ -21,7 +21,7 @@ class FeedbackFormTestCase(TestCase):
         self.assertIn('email', t.render(c))
 
         # Test with logged in user
-        request.user = UserFactory()
+        request.user = mixer.blend('auth.User')
         c = RequestContext(request)
         self.assertIn('<input type="submit" value="Send Feedback" />',
                       t.render(c))

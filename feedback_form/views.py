@@ -35,7 +35,7 @@ class FeedbackCreateView(CreateView):
         if self.request.user.is_authenticated():
             kwargs.update({'user': self.request.user})
         kwargs.update({
-            'url': self.request.META.get('HTTP_REFERER', self.request.path),
+            'url': self.request.path,
             'content_object': self.content_object if hasattr(
                 self, 'content_object') else None,
         })
